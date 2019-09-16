@@ -5,7 +5,7 @@ import (
 	"database/sql/driver"
 	"encoding/json"
 
-	"github.com/sqlbunny/geo"
+	"github.com/vaefremov/geo"
 )
 
 // LineString is a nullable geo.LineString.

@@ -5,7 +5,7 @@ import (
 	"database/sql/driver"
 	"encoding/json"
 
-	"github.com/sqlbunny/geo"
+	"github.com/vaefremov/geo"
 )
 
 // MultiPolygonZ is a nullable geo.MultiPolygonZ.

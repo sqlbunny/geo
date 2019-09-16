@@ -5,7 +5,7 @@ import (
 	"database/sql/driver"
 	"encoding/json"
 
-	"github.com/sqlbunny/geo"
+	"github.com/vaefremov/geo"
 )
 
 // PolygonZM is a nullable geo.PolygonZM.
