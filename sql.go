@@ -14,6 +14,8 @@ func scan(value interface{}, g geom) (err error) {
 		_, err = hex.Decode(data, value.([]byte))
 	case string:
 		data, err = hex.DecodeString(value.(string))
+	case nil:
+		return errors.New("EWKB scan: use null package members to process NULLs")
 	default:
 		return errors.New("EWKB scan: value is neither byte slice nor string")
 	}
