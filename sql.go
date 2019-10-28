@@ -6,17 +6,22 @@ import (
 	"errors"
 )
 
-func scan(value interface{}, g geom) error {
-	b, ok := value.([]byte)
-	if !ok {
-		return errors.New("EWKB scan: value is not byte slice")
+func scan(value interface{}, g geom) (err error) {
+	var data []byte
+	switch value.(type) {
+	case []byte:
+		data = make([]byte, len(value.([]byte)))
+		_, err = hex.Decode(data, value.([]byte))
+	case string:
+		data, err = hex.DecodeString(value.(string))
+	case nil:
+		return errors.New("EWKB scan: use null package members to process NULLs")
+	default:
+		return errors.New("EWKB scan: value is neither byte slice nor string")
 	}
-
-	data, err := hex.DecodeString(string(b))
 	if err != nil {
 		return err
 	}
-
 	return Unmarshal(data, g)
 }
 
